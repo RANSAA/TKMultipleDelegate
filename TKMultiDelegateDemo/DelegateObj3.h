@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DelegateObj3 : NSObject <Protocol_3>
+@interface DelegateObj3 : NSObject <Protocol3>
 
 @end
 

@@ -12,8 +12,8 @@
 #import "DelegateObj3.h"
 
 
-@interface ViewController ()<Protocol_1>
-@property(nonatomic, strong) TKMultipleDelegate *delegates;//多代理对象
+@interface ViewController ()<Protocol1>
+@property(nonatomic, strong) TKMultipleDelegate<Protocol1,Protocol2,Protocol3> *delegates;//Multiple Delegate
 @property(nonatomic, strong) DelegateObj2 *d2;
 @property(nonatomic, strong) DelegateObj3 *d3;
 @end
@@ -65,24 +65,44 @@
     [btnCount addTarget:self action:@selector(btnActionCount) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btnCount];
 
+    UIButton *btnVC = [UIButton buttonWithType:UIButtonTypeSystem];
+    btnVC.frame = CGRectMake(100, 400, 180, 40);
+    btnVC.backgroundColor = UIColor.grayColor;
+    [btnVC setTitleColor:UIColor.whiteColor forState:UIControlStateNormal];
+    [btnVC setTitle:@"New VC" forState:UIControlStateNormal];
+    [btnVC addTarget:self action:@selector(btnActionNewVC) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btnVC];
+
     self.d2 = [DelegateObj2 new];
     self.d3 = [DelegateObj3 new];
     [self.delegates addDelegate:self.d2];
     [self.delegates addDelegate:self.d3];
     [self.delegates addDelegate:self];
     [self.delegates addDelegate:@{}];
+    self.delegates.isAbort = NO;
 }
 
 - (void)btnActionCall
 {
-    [self.delegates performSelector:@selector(call)];
-    [self.delegates performSelector:@selector(call:index:) withObject:@"titlw" withObject:@(22)];
-    [self.delegates performSelector:@selector(didReceiveMemoryWarning1)];
+    //可以直接使用performSelector调用方法
+    //[self.delegates performSelector:@selector(call)];
+
+    if ([self.delegates respondsToSelector:@selector(call)]) {
+        NSString *re = [self.delegates call];
+        NSLog(@"re:%@",re);
+    }
+
+    if ([self.delegates respondsToSelector:@selector(callRe)]) {
+        CGFloat callRe = [self.delegates callRe];
+        NSLog(@"callRe:%f",callRe);
+    }
 }
 
 - (void)btnActionMore
 {
-    [self.delegates performSelector:@selector(more)];
+    if ([self.delegates respondsToSelector:@selector(more)]) {
+        [self.delegates more];
+    }
 }
 
 - (void)btnActionRemove
@@ -94,9 +114,9 @@
 {
     self.d2 = [DelegateObj2 new];
     self.d3 = [DelegateObj3 new];
+    [self.delegates addDelegate:self];
     [self.delegates addDelegate:self.d2];
     [self.delegates addDelegate:self.d3];
-    [self.delegates addDelegate:self];
 }
 
 
@@ -108,18 +128,38 @@
     NSLog(@"delegate allObjects:%@",self.delegates.allObjects);
 }
 
+- (void)btnActionNewVC
+{
+    ViewController *vc = [[ViewController alloc] init];
+    vc.view.backgroundColor = UIColor.systemGray6Color;
+    [self presentViewController:vc animated:YES completion:nil];
+}
+
+- (void)dealloc
+{
+    NSLog(@"viewController dealloc...");
+}
+
+
 - (TKMultipleDelegate*)delegates
 {
     if (!_delegates) {
-        _delegates = [TKMultipleDelegate new];
+        _delegates = [[TKMultipleDelegate<Protocol1,Protocol2,Protocol3> alloc] init];
     }
     return _delegates;
 }
 
 #pragma mark Protocol_1
-- (void)call
+- (NSString *)call
 {
     NSLog(@"VC-Protocol_1 call");
+
+    return @"VC-Call";
+}
+
+- (CGFloat)callRe
+{
+    return 10.0;
 }
 
 - (void)call:(NSString *)title index:(NSNumber *)index

@@ -9,18 +9,19 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol Protocol_1 <NSObject>
-- (void)call;
+@protocol Protocol1 <NSObject>
+- (NSString *)call;
+- (CGFloat)callRe;
 - (void)more;
 - (void)call:(NSString *)title  index:(NSNumber *)index;
 @end
 
-@protocol Protocol_2 <NSObject>
-- (void)call;
+@protocol Protocol2 <NSObject>
+- (NSString *)call;
 @end
 
-@protocol Protocol_3 <NSObject>
-- (void)call;
+@protocol Protocol3 <NSObject>
+- (NSString *)call;
 @end
 
 NS_ASSUME_NONNULL_END

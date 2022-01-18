@@ -20,8 +20,14 @@ pod 'TKMultipleDelegate'
 ## Tutorial
 
 ```
-@property(nonatomic, strong) TKMultipleDelegate *delegates;
+@property(nonatomic, strong) TKMultipleDelegate<Protocol1,Protocol2,Protocol3> *delegates;//Multiple Delegate
 ```
+
+```
+self.delegates = [[TKMultipleDelegate<Protocol1,Protocol2,Protocol3> alloc] init];
+```
+
+
 
 ```
 [self.delegates addDelegate:delegate1];
@@ -31,7 +37,9 @@ pod 'TKMultipleDelegate'
 ```
 
 ```
-[self.delegates performSelector:aSelector];
+if ([self.delegates respondsToSelector:@selector(call)]) {
+	[self.delegates call];
+}
 ```
 
 

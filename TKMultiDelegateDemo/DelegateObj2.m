@@ -8,8 +8,9 @@
 #import "DelegateObj2.h"
 
 @implementation DelegateObj2
-- (void)call
+- (NSString *)call
 {
     NSLog(@"DelegateObj2-Protocol_2 call");
+    return @"Obj2-Call";
 }
 @end

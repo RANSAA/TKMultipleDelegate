@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface DelegateObj2 : NSObject <Protocol_2>
+@interface DelegateObj2 : NSObject <Protocol2>
 
 @end
 

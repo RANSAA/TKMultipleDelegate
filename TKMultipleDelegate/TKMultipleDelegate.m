@@ -8,13 +8,13 @@
 #import "TKMultipleDelegate.h"
 
 
-//#ifndef TKLog
+#ifndef TKLog
 #ifdef DEBUG
 #define TKLog(fmt, ...) NSLog((fmt), ##__VA_ARGS__);
 #else
 #define TKLog(...);
 #endif
-//#endif
+#endif
 
 
 

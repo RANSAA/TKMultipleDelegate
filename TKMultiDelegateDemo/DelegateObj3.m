@@ -8,8 +8,9 @@
 #import "DelegateObj3.h"
 
 @implementation DelegateObj3
-- (void)call
+- (NSString *)call
 {
     NSLog(@"DelegateObj3-Protocol_3 call");
+    return @"Obj3-Call";
 }
 @end
