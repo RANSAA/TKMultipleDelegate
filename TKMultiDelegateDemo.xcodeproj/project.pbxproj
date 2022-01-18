@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F1C78D72796C5050098BEB0 /* TKMultiDelegateDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TKMultiDelegateDemo.entitlements; sourceTree = "<group>"; };
 		3F5A552F2795A86B004C99F7 /* TKMultiDelegateDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TKMultiDelegateDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5A55322795A86B004C99F7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3F5A55332795A86B004C99F7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,7 +56,7 @@
 		3F5A55262795A86B004C99F7 = {
 			isa = PBXGroup;
 			children = (
-				3F5A554C2795A890004C99F7 /* TKMultiDelegate */,
+				3F5A554C2795A890004C99F7 /* TKMultipleDelegate */,
 				3F5A55312795A86B004C99F7 /* TKMultiDelegateDemo */,
 				3F5A55302795A86B004C99F7 /* Products */,
 			);
@@ -72,6 +73,7 @@
 		3F5A55312795A86B004C99F7 /* TKMultiDelegateDemo */ = {
 			isa = PBXGroup;
 			children = (
+				3F1C78D72796C5050098BEB0 /* TKMultiDelegateDemo.entitlements */,
 				3F5A55322795A86B004C99F7 /* AppDelegate.h */,
 				3F5A55332795A86B004C99F7 /* AppDelegate.m */,
 				3F5A55352795A86B004C99F7 /* SceneDelegate.h */,
@@ -92,13 +94,13 @@
 			path = TKMultiDelegateDemo;
 			sourceTree = "<group>";
 		};
-		3F5A554C2795A890004C99F7 /* TKMultiDelegate */ = {
+		3F5A554C2795A890004C99F7 /* TKMultipleDelegate */ = {
 			isa = PBXGroup;
 			children = (
 				3F5A555C2795E844004C99F7 /* TKMultipleDelegate.h */,
 				3F5A555D2795E844004C99F7 /* TKMultipleDelegate.m */,
 			);
-			path = TKMultiDelegate;
+			path = TKMultipleDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -319,14 +321,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TKMultiDelegateDemo/TKMultiDelegateDemo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				INFOPLIST_FILE = TKMultiDelegateDemo/Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sayaDev.TKMultiDelegate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -336,14 +343,19 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TKMultiDelegateDemo/TKMultiDelegateDemo.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				INFOPLIST_FILE = TKMultiDelegateDemo/Info.plist;
+				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.sayaDev.TKMultiDelegate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

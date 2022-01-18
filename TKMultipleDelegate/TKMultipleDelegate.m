@@ -105,9 +105,9 @@
       return YES;
     }
     for (id delegate in _delegates) {
-      if (delegate && [delegate respondsToSelector:aSelector]) {
-        return YES;
-      }
+        if ([delegate respondsToSelector:aSelector]) {
+            return YES;
+        }
     }
     return NO;
 }
