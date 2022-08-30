@@ -19,6 +19,7 @@
 
 
 @interface TKMultipleDelegate ()
+//弱引用数组：用于存放所有的delegate对象
 @property (nonatomic, readonly) NSPointerArray *delegates;
 @end
 
@@ -45,6 +46,19 @@
 }
 
 
+//检查弱引用数组中是否已经存在delegate对象，防止重复添加
+- (NSUInteger)indexOfDelegate:(id)delegate {
+    @synchronized (self) {
+        for (NSUInteger i = 0; i < _delegates.count; i++) {
+            if ([_delegates pointerAtIndex:i] == (__bridge void*)delegate) {
+                return i;
+            }
+        }
+        return NSNotFound;
+    }
+}
+
+
 - (void)addDelegate:(id)delegate
 {
     @synchronized (self) {
@@ -55,6 +69,7 @@
         }
     }
 }
+
 
 - (void)removeDelegate:(id)delegate
 {
@@ -68,16 +83,6 @@
     }
 }
 
-- (NSUInteger)indexOfDelegate:(id)delegate {
-    @synchronized (self) {
-        for (NSUInteger i = 0; i < _delegates.count; i += 1) {
-            if ([_delegates pointerAtIndex:i] == (__bridge void*)delegate) {
-                return i;
-            }
-        }
-    }
-  return NSNotFound;
-}
 
 - (void)removeDelegateAtIndex:(NSUInteger)index
 {
@@ -139,11 +144,11 @@
         reason = [NSString stringWithFormat:@"⚠️%@实例内部所添加的delegate对象都未实现:%@",self.class,NSStringFromSelector(aSelector)];
         TKLog(@"%@",reason);
 
-        if (self.isAbort) {
 #if DEBUG
-        abort();
-#endif
+        if (self.isAbort) {
+            abort();
         }
+#endif
         signature = [NSMethodSignature signatureWithObjCTypes:@encode(void)];
     }
     return signature;
@@ -157,6 +162,7 @@
         return;
     }else{
         SEL selector = [anInvocation selector];
+        // 将消息发送对象转发到self.delegates中的所有对象中
         for (id delegate in _delegates) {
             if (delegate && [delegate respondsToSelector:selector]) {
                 [anInvocation invokeWithTarget:delegate];
@@ -164,4 +170,5 @@
         }
     }
 }
+
 @end
