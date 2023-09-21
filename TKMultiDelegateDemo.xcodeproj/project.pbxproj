@@ -324,6 +324,7 @@
 				CODE_SIGN_ENTITLEMENTS = TKMultiDelegateDemo/TKMultiDelegateDemo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 39E8LG3NH3;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				INFOPLIST_FILE = TKMultiDelegateDemo/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;
@@ -346,6 +347,7 @@
 				CODE_SIGN_ENTITLEMENTS = TKMultiDelegateDemo/TKMultiDelegateDemo.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 39E8LG3NH3;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = NO;
 				INFOPLIST_FILE = TKMultiDelegateDemo/Info.plist;
 				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 13.5;

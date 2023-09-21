@@ -37,11 +37,14 @@
 
 - (NSUInteger)count
 {
+    //清除所有已被释放的对象
+    [_delegates compact];
     return _delegates.allObjects.count;
 }
 
 - (NSArray *)allObjects
 {
+    [_delegates compact];
     return _delegates.allObjects;;
 }
 
@@ -64,7 +67,7 @@
     @synchronized (self) {
         if ([self indexOfDelegate:delegate] == NSNotFound) {
             [_delegates addPointer:(__bridge void*)delegate];
-            [_delegates addPointer:NULL];
+//            [_delegates addPointer:NULL];
             [_delegates compact];
         }
     }
@@ -78,7 +81,7 @@
         if (index != NSNotFound) {
           [_delegates removePointerAtIndex:index];
         }
-        [_delegates addPointer:NULL];
+//        [_delegates addPointer:NULL];
         [_delegates compact];
     }
 }
@@ -88,7 +91,7 @@
 {
     @synchronized (self) {
         [_delegates removePointerAtIndex:index];
-        [_delegates addPointer:NULL];
+//        [_delegates addPointer:NULL];
         [_delegates compact];
     }
 }
@@ -97,7 +100,7 @@
 {
     @synchronized (self) {
         _delegates.count = 0;
-        [_delegates addPointer:NULL];
+//        [_delegates addPointer:NULL];
         [_delegates compact];
     }
 }
