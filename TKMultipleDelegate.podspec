@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.version          = '1.0.1'
   s.summary          = 'iOS实现多代理功能'
   s.description      = <<-DESC
-TODO: Add long description of the pod here.
+  iOS实现多用户代理功能
                        DESC
   s.homepage         = 'https://github.com/RANSAA/TKMultipleDelegate'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
