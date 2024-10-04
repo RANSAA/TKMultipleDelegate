@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TKMultipleDelegate'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'iOS实现多代理功能'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -23,6 +23,11 @@ TODO: Add long description of the pod here.
   s.osx.deployment_target = '10.13'
 
   s.source_files = 'TKMultipleDelegate/*'
+
+  ## 隐私清单
+  s.resource_bundles = {
+      'TKMultipleDelegate' => ['TKMultipleDelegate/PrivacyInfo.xcprivacy']
+  }
   
   # s.resource_bundles = {
   #   'TKMultipleDelegate' => ['TKMultipleDelegate/Assets/*.png']
